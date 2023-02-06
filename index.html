@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <!--link font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Lista de Tarefas</title>
+    <script src="https://unpkg.com/phosphor-icons"></script>
+  </head>
+  <body>
+    <div class="container-list">
+      <form class="digite">
+        <input
+          id="inputText"
+          type="text"
+          placeholder="Digite aqui sua tarefa..."
+        />
+        <button id="btn-add"><img src="images/add.png" alt="" /></button>
+      </form>
+      <div class="list">
+        <h3 id="isNoneTask">Organize seu dia...</h3>
+        <ul id="container-list"></ul>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const inputText = document.getElementById("inputText");
+      const button = document.getElementById("btn-add");
+      const noneTask = document.getElementById("isNoneTask");
+      const containerList = document.getElementById("container-list");
+
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (
+          inputText.value != "" &&
+          inputText.value.substr(0, 1).replace(/\s/, "undefined") != "undefined"
+        ) {
+          let elLi = document.createElement("li");
+          elLi.innerHTML = `
+      <label>
+      <input class="check" type="checkbox" />
+      <p>${inputText.value}</p>
+      <button><i class="ph-note-pencil"></i></button>
+      </label>
+      `;
+
+          containerList.appendChild(elLi);
+
+          let label = elLi.children[0];
+          let paragraph = label.children[1];
+          let isCheck = label.children[0];
+          let elButton = label.children[2];
+
+          label.addEventListener("click", () => {
+            if (isCheck.checked) {
+              paragraph.className = "line-through";
+            } else {
+              paragraph.classList.remove("line-through");
+            }
+          });
+          // function read, update and delete.
+          elButton.addEventListener("click", () => {
+            let upOrDelete = prompt(
+              `Você está na tarefa "${paragraph.innerText}" \n O que você deseja fazer? \n 1 Editar  \n 2 Deletar`
+            );
+            if (upOrDelete == "1") {
+              let editeAqui = prompt("Edite aqui");
+              paragraph.innerText = editeAqui;
+            } else if (upOrDelete == "2") {
+              let confirmHere = confirm(
+                "Tem certeza que deseja deletar a tarefa?"
+              );
+              confirmHere ? elLi.remove() : false;
+            } else {
+              alert("escolha  opção valida");
+            }
+          });
+
+          if (inputText.value != "") {
+            noneTask.style.display = "none";
+          }
+
+          inputText.value = "";
+        } else {
+          alert("preencha os campos!!!!");
+        }
+      });
+    </script>
+  </body>
+</html>

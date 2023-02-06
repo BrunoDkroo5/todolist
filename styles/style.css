@@ -1,0 +1,148 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+@-webkit-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.container-list {
+  width: 416px;
+  height: 629px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 45px;
+}
+
+.digite {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.digite input {
+  width: 288px;
+  height: 29px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+}
+.digite button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.list {
+  margin-top: 40px;
+  overflow-y: auto;
+  height: 490px;
+}
+.list h3 {
+  text-align: center;
+  color: #c4c4c4;
+}
+.list ul {
+  list-style-type: none;
+  color: #413f3f;
+}
+.list ul input {
+  scale: 0.8;
+  width: 20px;
+  height: 20px;
+}
+.list ul input:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-left: -3px;
+  margin-top: -4px;
+  border-radius: 8px;
+  border: 3px solid #c4c4c4;
+  position: absolute;
+  background-color: white;
+  outline: 0;
+}
+.list ul input:checked:after {
+  content: "✔";
+  width: 26px;
+  height: 26px;
+  margin-left: -3px;
+  margin-top: -4px;
+  position: absolute;
+  font-size: 23px;
+  text-align: center;
+  color: white;
+  background-color: #c3c3c3;
+  border-radius: 8px;
+  -webkit-animation-name: faideInOut;
+          animation-name: faideInOut;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  outline: 0;
+}
+.list li {
+  margin-top: 15px;
+}
+.list li label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.list li p {
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.list li button {
+  background: transparent;
+  border: 0;
+  padding: 5px;
+  border-radius: 500px;
+  margin-top: -5px;
+  cursor: pointer;
+}
+.list li button i {
+  font-size: 22px;
+}
+
+.check {
+  height: 50px;
+  background-color: transparent;
+  border-radius: 15px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}/*# sourceMappingURL=style.css.map */
